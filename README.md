@@ -38,6 +38,9 @@ nicer way to do this with Quarkus. Also it has no concept of expiry and will gro
 process lives. You could implement your own scheduled expiry or use a cache that implements it for you
 https://github.com/ben-manes/caffeine
 
+Another caveat is the app will happily come up and be available for HTTP access while it's consuming
+the topic. So you may access unexpected state over HTTP while it's starting up.
+
 You can also have quarkus start a kafka cluster for you on docker by removing `kafka.bootstrap.servers` from
 `application.properties`, though I had to run this with a native mvn instead of with the `mvnw` wrapper. It
 also worked nicely from IntelliJ IDEA.
