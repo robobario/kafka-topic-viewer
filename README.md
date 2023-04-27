@@ -4,6 +4,12 @@ This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Classes
+
+* [KtableConsumer.java](src/main/java/org/example/KtableConsumer.java) - Consumes from ktable topic and updates state store
+* [StateStoreResource.java](src/main/java/org/example/StateStoreResource.java) - HTTP resource to query state store
+* [SynchronizedStateStore.java](src/main/java/org/example/SynchronizedStateStore.java) - threadsafe state store shared between HTTP resource and Kafka Consumer
+
 ## Running the application in dev mode
 
 Start 
@@ -29,7 +35,8 @@ the entirety of the topic every time it starts.
 
 The StateStore is naively threadsafe by synchronizing it's methods, there's bound to be a
 nicer way to do this with Quarkus. Also it has no concept of expiry and will grow while the
-process lives.
+process lives. You could implement your own scheduled expiry or use a cache that implements it for you
+https://github.com/ben-manes/caffeine
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8082/q/dev/.
 
