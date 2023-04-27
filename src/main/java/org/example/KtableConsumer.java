@@ -14,9 +14,6 @@ public class KtableConsumer {
     @Inject
     SynchronizedStateStore synchronizedStateStore;
 
-    /**
-     * Consume the uppercase channel (in-memory) and print the messages.
-     **/
     @Incoming("ktable")
     public void sink(Record<String, String> record) {
         logger.info("Received: ( key:" + record.key() + ", value:" + record.value() + " )");
