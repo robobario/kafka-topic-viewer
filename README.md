@@ -38,6 +38,10 @@ nicer way to do this with Quarkus. Also it has no concept of expiry and will gro
 process lives. You could implement your own scheduled expiry or use a cache that implements it for you
 https://github.com/ben-manes/caffeine
 
+You can also have quarkus start a kafka cluster for you on docker by removing `kafka.bootstrap.servers` from
+`application.properties`, though I had to run this with a native mvn instead of with the `mvnw` wrapper. It
+also worked nicely from IntelliJ IDEA.
+
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8082/q/dev/.
 
 ## Packaging and running the application
