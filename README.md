@@ -9,12 +9,21 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 Start 
 Run up a kafka broker on localhost:9092 using the apache kafka binary distribution
 
+Push some messages to a topic named `ktable`:
+```
+./bin/kafka-console-producer.sh --topic ktable --property "parse.key=true" --property "key.separator=:" --bootstrap-server localhost:9092
+>a:b
+>a:c
+>d:hello
+>d:world
+```
+
 You can then run your application in dev mode that enables live coding using:
 ```shell script
 ./mvnw compile quarkus:dev
 ```
 
-Then you can request `http://localhost:8082/test/{key}` to get all records for a key. The
+Then you can request `http://localhost:8082/test/a` to get all records for a key. The
 app is configured to not commit offsets and reset to earliest offset so it should consume
 the entirety of the topic every time it starts.
 
